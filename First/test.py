@@ -10,3 +10,6 @@ if __name__ == '__main__':
     print(text)
     print(qwer)
     print(qwer + " " + text)
+    
+    
+    #чо это за хуйня????
