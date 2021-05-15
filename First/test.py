@@ -9,3 +9,4 @@ if __name__ == '__main__':
     plus(1, 3)
     print(text)
     print(qwer)
+    print(qwer + " " + text)
