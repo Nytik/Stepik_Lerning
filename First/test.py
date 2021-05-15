@@ -1,7 +1,7 @@
 def plus(a, b):
     return print(a+b)
 
-text = 'hello'
+text = 'hello world'
 
 if __name__ == '__main__':
     plus(1, 3)
