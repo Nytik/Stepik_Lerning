@@ -1,6 +1,6 @@
 import pytest
 
-
+@pytest.mark.xfail(reason = 'должен упасть хотя и проходит', strict  = True)
 def test_succeed():
     assert True
 
