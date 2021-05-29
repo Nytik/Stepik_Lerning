@@ -1,7 +1,10 @@
 import pytest
 import math
+import time
 from selenium import webdriver
 
+answer = math.log(int(time.time()))
+code_link = ['236895', '236896', '236897', '236898', '236899', '236903', '236904', '236905']
 
 @pytest.fixture(scope="function")
 def browser():
@@ -11,15 +14,12 @@ def browser():
     print("\nquit browser..")
     browser.quit()
 
-def links():
-    l = "https://stepik.org/lesson/236895/step/1" \
-        "https://stepik.org/lesson/236896/step/1" \
-        "https://stepik.org/lesson/236897/step/1" \
-        "https://stepik.org/lesson/236898/step/1" \
-        "https://stepik.org/lesson/236899/step/1" \
-        "https://stepik.org/lesson/236903/step/1" \
-        "https://stepik.org/lesson/236904/step/1" \
-        "https://stepik.org/lesson/236905/step/1"
-    l_split = l.split()
-    for i in l_split:
-        print(i)
+@pytest.mark.parametrize('code', code_link)
+def test_guest_should_see_login_link(browser, code):
+    link = f"https://stepik.org/lesson/{code}/step/1"
+    browser.get(link)
+    textarea = browser.find_element_by_css_selector("#ember85")
+    textarea.send_keys(answer)
+    button = browser.find_element_by_css_selector(".submit-submission")
+    button.click()
+
